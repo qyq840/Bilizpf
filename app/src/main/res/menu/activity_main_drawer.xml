@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" android:id="@+id/a1">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="主页" />
+        <item
+            android:id="@+id/nav_big_vip"
+            android:icon="@drawable/ic_nav_vip"
+            android:title="我的大会员" />
+        <item
+            android:id="@+id/nav_vip_jifen"
+            android:icon="@drawable/ic_nav_point"
+            android:title="会员积分"
+            />
+        <item
+            android:id="@+id/nav_download"
+            android:icon="@drawable/ic_download_grey_24dp"
+            android:title="离线下载" />
+
+            <item
+                android:id="@+id/nav_shaohouzaikan"
+                android:icon="@drawable/ic_view_later_24dp"
+                android:title="稍后再看" />
+            <item
+                android:id="@+id/nav_shoucang"
+                android:icon="@drawable/ic_star_black_24dp"
+                android:title="我的收藏" />
+            <item
+                android:id="@+id/nav_lishijilu"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="历史记录" />
+            <item
+                android:id="@+id/nav_guanzhu"
+                android:icon="@drawable/ic_people_black_24dp"
+                android:title="我的关注" />
+          </group>
+    <group android:checkableBehavior="single" android:id="@+id/a2">
+            <item
+                android:id="@+id/nav_b_money"
+                android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+                android:title="B币钱包" />
+
+            <item android:id="@+id/zhuti"
+                android:icon="@drawable/ic_color_lens_black_24dp"
+                android:title="主题选择"/>
+
+            <item android:id="@+id/setting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="设置与帮助">
+            </item>
+    </group>
+</menu>
