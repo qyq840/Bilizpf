@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,10 +35,10 @@
             android:text="当前有20个直播"
            />
     </LinearLayout>
-
     <GridView
         android:id="@+id/gv_gridview"
         android:layout_width="wrap_content"
         android:layout_height="360dp"
         android:numColumns="2"></GridView>
+
 </LinearLayout>

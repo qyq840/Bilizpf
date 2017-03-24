@@ -2,7 +2,6 @@ package com.zhaopengfei.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -204,7 +203,6 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
     private void processData(String json) {
         HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
 
-        Log.e("TAG", "ZhiboAdapter processData()" + homeBean.getResult().getRecommend_info());
 
         recommend_info = homeBean.getResult().getRecommend_info();
         viewHoler.setData(recommend_info);
