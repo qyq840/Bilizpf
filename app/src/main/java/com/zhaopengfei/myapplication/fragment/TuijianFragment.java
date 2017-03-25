@@ -1,5 +1,7 @@
 package com.zhaopengfei.myapplication.fragment;
 
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.GridView;
 
@@ -22,6 +24,8 @@ import okhttp3.Call;
 public class TuijianFragment extends BaseFragment {
     @BindView(R.id.gv_tuijian)
     GridView gvTuijian;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private TuiJianAdapter adapter;
     private TuijianBean tuijianBean;
@@ -36,6 +40,14 @@ public class TuijianFragment extends BaseFragment {
     @Override
     protected void initData() {
         getDataFragment();
+        //下拉刷新
+        swipeRefreshLayout.setColorSchemeColors(Color.GREEN,Color.RED);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataFragment();
+            }
+        });
     }
 
     private void getDataFragment() {
@@ -47,14 +59,16 @@ public class TuijianFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-                    processData(response);
+                processData(response);
+                //刷新完成后
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
 
     private void processData(String json) {
         tuijianBean = JSON.parseObject(json, TuijianBean.class);
-        adapter =new TuiJianAdapter(mContext, tuijianBean);
+        adapter = new TuiJianAdapter(mContext, tuijianBean);
         gvTuijian.setAdapter(adapter);
 
 

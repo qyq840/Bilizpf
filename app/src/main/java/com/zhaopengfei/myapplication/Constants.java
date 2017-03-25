@@ -13,6 +13,10 @@ public class Constants {
 
     private static final String BASE_URL_JSON = BASE_URL+"/json/";
 
+    public static final  String FENQU_JSON="http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+
+   //发现里面的话题中心
+    public static final  String HUATIZHONGXIN_JSON="http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";
 
     //http://47.93.118.241/web_home/static/api/news/categories.json
     /**

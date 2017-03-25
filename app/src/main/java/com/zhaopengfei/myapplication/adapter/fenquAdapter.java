@@ -50,12 +50,12 @@ public class fenquAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
+        ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.fenqu_item_adapter, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 

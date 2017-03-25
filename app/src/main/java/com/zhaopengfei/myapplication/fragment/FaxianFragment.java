@@ -1,5 +1,6 @@
 package com.zhaopengfei.myapplication.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.CardView;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.zhaopengfei.myapplication.R;
+import com.zhaopengfei.myapplication.activity.HuoDongActivity;
+import com.zhaopengfei.myapplication.activity.OriginalActivity;
+import com.zhaopengfei.myapplication.activity.TopicCenterActivity;
 import com.zhaopengfei.myapplication.base.BaseFragment;
 import com.zhaopengfei.myapplication.bean.TagBean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -27,6 +31,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
+
+import static com.zhaopengfei.myapplication.R.id.activity_center_layout;
+import static com.zhaopengfei.myapplication.R.id.layout_original;
+import static com.zhaopengfei.myapplication.R.id.topic_center_layout;
 
 /**
  * Created by admin on 2017/3/21.
@@ -59,15 +67,15 @@ public class FaxianFragment extends BaseFragment {
     RelativeLayout icQuanziLayout;
     @BindView(R.id.ic_topic)
     ImageView icTopic;
-    @BindView(R.id.topic_center_layout)
+    @BindView(topic_center_layout)
     RelativeLayout topicCenterLayout;
     @BindView(R.id.ic_activity)
     ImageView icActivity;
-    @BindView(R.id.activity_center_layout)
+    @BindView(activity_center_layout)
     RelativeLayout activityCenterLayout;
     @BindView(R.id.ic_original)
     ImageView icOriginal;
-    @BindView(R.id.layout_original)
+    @BindView(layout_original)
     RelativeLayout layoutOriginal;
     @BindView(R.id.ic_all_rank)
     ImageView icAllRank;
@@ -99,6 +107,8 @@ public class FaxianFragment extends BaseFragment {
         initListener();
 
         getTagNet();
+
+
 
     }
 
@@ -161,6 +171,8 @@ public class FaxianFragment extends BaseFragment {
                 return tags;
             }
         });
+
+
     }
 
 
@@ -193,7 +205,35 @@ public class FaxianFragment extends BaseFragment {
                 }
             }
         });
+
+        //原创排行
+        layoutOriginal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, OriginalActivity.class));
+            }
+        });
+
+
+        activityCenterLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, HuoDongActivity.class));
+            }
+        });
+
+
+        topicCenterLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, TopicCenterActivity.class));
+            }
+        });
+
+
+
     }
+
 
 
 }

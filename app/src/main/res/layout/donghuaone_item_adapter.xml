@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_arrow_left_flash" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动画区"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="进去看看" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gv_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:numColumns="2">
+
+    </GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/tv_jiazaidonghua"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:text="更多动画"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:drawableRight="@drawable/tag_center_refresh_icon"
+            android:text="189条新动态，点击刷新" />
+    </LinearLayout>
+
+   <!--<com.youth.banner.Banner-->
+        <!--android:id="@+id/banner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="160dp">-->
+
+    <!--</com.youth.banner.Banner>-->
+</LinearLayout>

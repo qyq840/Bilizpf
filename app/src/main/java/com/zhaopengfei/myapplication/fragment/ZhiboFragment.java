@@ -1,5 +1,7 @@
 package com.zhaopengfei.myapplication.fragment;
 
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,8 @@ public class ZhiboFragment extends BaseFragment {
 
     @BindView(R.id.rv_home)
     RecyclerView rvHome;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
     private ZhiboAdapter adapter;
 
     @Override
@@ -39,8 +43,20 @@ public class ZhiboFragment extends BaseFragment {
     @Override
     protected void initData() {
         getDataFragment();
+        //下拉刷新
+        swipeRefreshLayout.setColorSchemeColors(Color.RED,Color.BLUE);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataFragment();
+
+            }
+        });
+
+
     }
 
+    //联网请求
     private void getDataFragment() {
         OkHttpUtils.get().url(Constants.BBASE_URL).id(100).build().execute(new StringCallback() {
             @Override
@@ -51,6 +67,8 @@ public class ZhiboFragment extends BaseFragment {
             @Override
             public void onResponse(String response, int id) {
                 proessData(response);
+                //刷新结束
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
