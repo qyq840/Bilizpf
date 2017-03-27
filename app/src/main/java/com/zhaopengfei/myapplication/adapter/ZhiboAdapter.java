@@ -1,6 +1,7 @@
 package com.zhaopengfei.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.youth.banner.loader.ImageLoader;
 import com.youth.banner.transformer.AccordionTransformer;
 import com.zhaopengfei.myapplication.Constants;
 import com.zhaopengfei.myapplication.R;
+import com.zhaopengfei.myapplication.activity.BannerActivity;
 import com.zhaopengfei.myapplication.bean.HomeBean;
 import com.zhaopengfei.myapplication.bean.ZhiBobean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -73,7 +75,7 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 7;
     }
 
     @Override
@@ -223,10 +225,10 @@ class BannerViewHoler extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void setData(List<ZhiBobean.DataBean.BannerBean> banners) {
+    public void setData(final List<ZhiBobean.DataBean.BannerBean> banners) {
         List<String> imags = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            imags.add(banners.get(0).getImg());
+        for (int i = 0; i < banners.size(); i++) {
+            imags.add(banners.get(i).getImg());
 
         }
 
@@ -243,7 +245,9 @@ class BannerViewHoler extends RecyclerView.ViewHolder {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Toast.makeText(mContext, "position" + position, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, BannerActivity.class);
+                mContext.startActivity(intent);
             }
         });
     }

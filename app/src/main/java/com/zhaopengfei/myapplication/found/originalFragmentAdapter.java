@@ -1,8 +1,8 @@
 package com.zhaopengfei.myapplication.found;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +27,10 @@ public class originalFragmentAdapter extends RecyclerView.Adapter<originalFragme
     private final Context mContext;
     private final List<OriginalBean.DataBean> datas;
 
+
     public originalFragmentAdapter(Context mContext, List<OriginalBean.DataBean> datas) {
         this.mContext = mContext;
         this.datas = datas;
-        Log.e("TAG", "originalFragmentAdapter originalFragmentAdapter()"+datas.toString());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class originalFragmentAdapter extends RecyclerView.Adapter<originalFragme
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.setData(datas,position);
+        holder.setData(datas, position);
 
 
     }
@@ -61,6 +61,8 @@ public class originalFragmentAdapter extends RecyclerView.Adapter<originalFragme
         TextView name;
         @BindView(R.id.tv_pingfen)
         TextView tvPingfen;
+        @BindView(R.id.tv_num)
+        TextView tvNum;
 
         ViewHolder(View view) {
             super(view);
@@ -69,6 +71,15 @@ public class originalFragmentAdapter extends RecyclerView.Adapter<originalFragme
 
         public void setData(List<OriginalBean.DataBean> datas, int position) {
             OriginalBean.DataBean dataBean = datas.get(position);
+
+            tvNum.setText(position + 1 + "");
+            if (position < 3) {
+
+                    tvNum.setTextColor(Color.parseColor("#fb7299"));
+
+            }else {
+                     tvNum.setTextColor(Color.parseColor("#cdcdcd"));
+            }
             Glide.with(mContext).load(dataBean.getCover()).into(igImage);
             name.setText(dataBean.getName());
             title.setText(dataBean.getTitle());

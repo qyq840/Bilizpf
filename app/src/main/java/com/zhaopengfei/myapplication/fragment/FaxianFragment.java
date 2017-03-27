@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.zhaopengfei.myapplication.R;
 import com.zhaopengfei.myapplication.activity.HuoDongActivity;
 import com.zhaopengfei.myapplication.activity.OriginalActivity;
+import com.zhaopengfei.myapplication.activity.QuanQuRankingActivity;
 import com.zhaopengfei.myapplication.activity.TopicCenterActivity;
 import com.zhaopengfei.myapplication.base.BaseFragment;
 import com.zhaopengfei.myapplication.bean.TagBean;
@@ -33,8 +34,8 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 
 import static com.zhaopengfei.myapplication.R.id.activity_center_layout;
+import static com.zhaopengfei.myapplication.R.id.ic_all_rank;
 import static com.zhaopengfei.myapplication.R.id.layout_original;
-import static com.zhaopengfei.myapplication.R.id.topic_center_layout;
 
 /**
  * Created by admin on 2017/3/21.
@@ -67,8 +68,6 @@ public class FaxianFragment extends BaseFragment {
     RelativeLayout icQuanziLayout;
     @BindView(R.id.ic_topic)
     ImageView icTopic;
-    @BindView(topic_center_layout)
-    RelativeLayout topicCenterLayout;
     @BindView(R.id.ic_activity)
     ImageView icActivity;
     @BindView(activity_center_layout)
@@ -77,7 +76,7 @@ public class FaxianFragment extends BaseFragment {
     ImageView icOriginal;
     @BindView(layout_original)
     RelativeLayout layoutOriginal;
-    @BindView(R.id.ic_all_rank)
+    @BindView(ic_all_rank)
     ImageView icAllRank;
     @BindView(R.id.layout_all_rank)
     RelativeLayout layoutAllRank;
@@ -89,11 +88,16 @@ public class FaxianFragment extends BaseFragment {
     ImageView icShop;
     @BindView(R.id.layout_shop)
     RelativeLayout layoutShop;
+    @BindView(R.id.topic_center_layout)
+    RelativeLayout topicCenterLayout;
+    @BindView(R.id.quanqu)
+    TextView quanqu;
     private TagBean tagBean;
 
     private List<TagBean.DataBean.ListBean> datas;
 
-    private boolean isShowMore= true;
+    private boolean isShowMore = true;
+
     @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragment_item_fenlei, null);
@@ -107,7 +111,6 @@ public class FaxianFragment extends BaseFragment {
         initListener();
 
         getTagNet();
-
 
 
     }
@@ -206,6 +209,13 @@ public class FaxianFragment extends BaseFragment {
             }
         });
 
+        //全区排行
+        quanqu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, QuanQuRankingActivity.class));
+            }
+        });
         //原创排行
         layoutOriginal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,7 +224,7 @@ public class FaxianFragment extends BaseFragment {
             }
         });
 
-
+        //活动中心的
         activityCenterLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,6 +233,7 @@ public class FaxianFragment extends BaseFragment {
         });
 
 
+        //话题中心
         topicCenterLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,9 +242,7 @@ public class FaxianFragment extends BaseFragment {
         });
 
 
-
     }
-
 
 
 }

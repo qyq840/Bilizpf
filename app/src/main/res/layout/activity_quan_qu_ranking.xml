@@ -35,7 +35,7 @@
 
 
                     <ImageView
-                        android:id="@+id/iv_back_yuanchuang"
+                        android:id="@+id/iv_back_quanqu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="排行榜"
+                        android:text="全区排行榜"
                         android:textColor="#eaeaea" />
 
                 </LinearLayout>
@@ -78,28 +78,26 @@
         </android.support.v7.widget.Toolbar>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FB7299"
-            android:orientation="horizontal">
+
 
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tablayout"
                 style="@style/MyCustomTabLayout"
-                android:layout_width="match_parent"
-                android:shrinkColumns="2"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
+
                 android:layout_gravity="center_horizontal"
                 android:background="#ff4081" />
 
-            <TextView
+           <!--
+           android:shrinkColumns="2"
+           <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"/>-->
 
-        </LinearLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

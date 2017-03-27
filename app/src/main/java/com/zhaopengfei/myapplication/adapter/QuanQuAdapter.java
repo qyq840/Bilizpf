@@ -9,18 +9,17 @@ import com.zhaopengfei.myapplication.base.BaseFragment;
 import java.util.ArrayList;
 
 /**
- * Created by admin on 2017/3/21.
+ * Created by admin on 2017/3/25.
  */
 
-public class CommunityViewPagerAdapter extends FragmentPagerAdapter {
+public class QuanQuAdapter extends FragmentPagerAdapter {
     private ArrayList<BaseFragment> fragments;
-    private String[] titles = new String[]{"直播", "推荐", "追番", "分区", "发现"};
+    private String title[] = {"番剧", "动画", "国创", "音乐", "舞蹈", "游戏", "科技", "生活", "鬼畜", "时尚", "娱乐", "电影", "电视剧"};
 
-    public CommunityViewPagerAdapter(FragmentManager fm, ArrayList<BaseFragment> fragments) {
+    public QuanQuAdapter(FragmentManager fm, ArrayList<BaseFragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }
-
 
     @Override
     public Fragment getItem(int position) {
@@ -34,6 +33,6 @@ public class CommunityViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles[position];
+        return title[position];
     }
 }

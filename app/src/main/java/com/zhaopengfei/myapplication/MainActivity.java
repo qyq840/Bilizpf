@@ -1,5 +1,6 @@
 package com.zhaopengfei.myapplication;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,7 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.zhaopengfei.myapplication.activity.BaseActivity;
 import com.zhaopengfei.myapplication.adapter.CommunityViewPagerAdapter;
 import com.zhaopengfei.myapplication.base.BaseFragment;
@@ -24,6 +28,8 @@ import com.zhaopengfei.myapplication.fragment.ZhuiFanFragment;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -150,4 +156,40 @@ public class MainActivity extends BaseActivity
         fragments.add(new FaxianFragment());
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.title_game, R.id.title_download, R.id.title_search})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_game:
+                Toast.makeText(MainActivity.this, "游戏", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.title_download:
+                Toast.makeText(MainActivity.this, "下载", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.title_search:
+
+                //实例化
+                SearchFragment searchFragment = SearchFragment.newInstance();
+
+                //第二句 , 设置回调
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        Toast.makeText(MainActivity.this, keyword, Toast.LENGTH_SHORT).show();
+                    }
+                });
+               //3
+                searchFragment.show(getSupportFragmentManager(),SearchFragment.TAG);
+
+
+                break;
+
+        }
+    }
 }

@@ -53,7 +53,7 @@ public class OriginalActivity extends BaseActivity {
 
         //关联
         tablayout.setupWithViewPager(viewPager);
-        tablayout.setTabMode(tablayout.MODE_FIXED);
+        tablayout.setTabMode(tablayout.MODE_SCROLLABLE);
     }
 
     private void initFragment() {
