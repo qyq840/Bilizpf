@@ -1,6 +1,5 @@
 package com.zhaopengfei.myapplication;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -28,7 +27,6 @@ import com.zhaopengfei.myapplication.fragment.ZhuiFanFragment;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity
@@ -154,13 +152,6 @@ public class MainActivity extends BaseActivity
         fragments.add(new ZhuiFanFragment());
         fragments.add(new FenQuFragment());
         fragments.add(new FaxianFragment());
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.title_game, R.id.title_download, R.id.title_search})

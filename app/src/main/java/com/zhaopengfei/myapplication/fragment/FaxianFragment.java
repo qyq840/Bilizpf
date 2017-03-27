@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.zhaopengfei.myapplication.R;
 import com.zhaopengfei.myapplication.activity.HuoDongActivity;
 import com.zhaopengfei.myapplication.activity.OriginalActivity;
@@ -36,15 +38,18 @@ import okhttp3.Call;
 import static com.zhaopengfei.myapplication.R.id.activity_center_layout;
 import static com.zhaopengfei.myapplication.R.id.ic_all_rank;
 import static com.zhaopengfei.myapplication.R.id.layout_original;
+import static com.zhaopengfei.myapplication.R.id.layout_shop;
+import static com.zhaopengfei.myapplication.R.id.search_edit;
 
 /**
  * Created by admin on 2017/3/21.
  */
 
 public class FaxianFragment extends BaseFragment {
+
     @BindView(R.id.search_scan)
     ImageView searchScan;
-    @BindView(R.id.search_edit)
+    @BindView(search_edit)
     TextView searchEdit;
     @BindView(R.id.search_img)
     ImageView searchImg;
@@ -86,7 +91,7 @@ public class FaxianFragment extends BaseFragment {
     RelativeLayout layoutGameCenter;
     @BindView(R.id.ic_shop)
     ImageView icShop;
-    @BindView(R.id.layout_shop)
+    @BindView(layout_shop)
     RelativeLayout layoutShop;
     @BindView(R.id.topic_center_layout)
     RelativeLayout topicCenterLayout;
@@ -233,6 +238,13 @@ public class FaxianFragment extends BaseFragment {
         });
 
 
+        layoutShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "点击进入购物车", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         //话题中心
         topicCenterLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,6 +253,23 @@ public class FaxianFragment extends BaseFragment {
             }
         });
 
+        searchEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //实例化
+                SearchFragment searchFragment = SearchFragment.newInstance();
+
+                //第二句 , 设置回调
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
+            }
+        });
 
     }
 

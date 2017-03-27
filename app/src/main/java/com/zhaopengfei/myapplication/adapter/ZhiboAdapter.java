@@ -54,7 +54,6 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
     private final ZhiBobean.DataBean data;
 
 
-
     private LayoutInflater inflater;
 
     private int currenType = BANNER;
@@ -131,6 +130,7 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
         TextView zhiborenshu;
         @BindView(R.id.gv_gridview)
         GridView gvGridview;
+
         public HuihuaViewHoler(Context mContext, View itemView) {
             super(itemView);
             this.mContext = mContext;
@@ -142,16 +142,8 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
             adapter = new HuihuaAdapter(mContext, partitions);
             gvGridview.setAdapter(adapter);
 
-
-
-
-
             Glide.with(mContext).load(partitions.get(0).getPartition().
                     getSub_icon().getSrc()).into(huituzhuanqu);
-
-
-
-
 
             zhiborenshu.setText(partitions.get(0).getPartition().getName());
 
@@ -198,7 +190,15 @@ public class ZhiboAdapter extends RecyclerView.Adapter {
             //设置适配器
             adapter = new recommend_adapter(mContext, recommend_info);
             gvRecommend.setAdapter(adapter);
+
+            gvRecommend.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(mContext, "ddd"+position, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
+
 
     }
 

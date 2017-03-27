@@ -1,6 +1,8 @@
 package com.zhaopengfei.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zhaopengfei.myapplication.R;
+import com.zhaopengfei.myapplication.activity.DanmkuVideoActivity;
 import com.zhaopengfei.myapplication.bean.ZhiBobean;
 
 import java.util.List;
@@ -46,8 +49,8 @@ public class HuihuaAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder ;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.item_huihua_adapter, null);
             viewHolder = new ViewHolder(convertView);
@@ -63,17 +66,29 @@ public class HuihuaAdapter extends BaseAdapter {
                 .into(viewHolder.ivHuitu);
 
 
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(mContext, DanmkuVideoActivity.class);
+                intent.putExtra("video",datas.get(position).getLives().get(position).getPlayurl());
+                mContext.startActivity(intent);
+            }
+        });
         return convertView;
     }
+
 
     static class ViewHolder {
         @BindView(R.id.iv_huitu)
         ImageView ivHuitu;
         @BindView(R.id.tv_name)
         TextView tvName;
+        @BindView(R.id.card_view)
+        CardView cardView;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
 }
