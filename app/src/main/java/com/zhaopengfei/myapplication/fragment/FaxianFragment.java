@@ -23,6 +23,7 @@ import com.zhaopengfei.myapplication.activity.QuanQuRankingActivity;
 import com.zhaopengfei.myapplication.activity.TopicCenterActivity;
 import com.zhaopengfei.myapplication.base.BaseFragment;
 import com.zhaopengfei.myapplication.bean.TagBean;
+import com.zhaopengfei.myapplication.shopping.ShoppingActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -143,6 +144,7 @@ public class FaxianFragment extends BaseFragment {
     }
 
     private void processData(String json) {
+
         tagBean = JSON.parseObject(json, TagBean.class);
         datas = tagBean.getData().getList();
 
@@ -241,7 +243,8 @@ public class FaxianFragment extends BaseFragment {
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击进入购物车", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "点击进入购物车", Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(mContext, ShoppingActivity.class));
             }
         });
 

@@ -8,10 +8,11 @@
     tools:context="com.zhaopengfei.myapplication.activity.BannerActivity">
 
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#99000000"
+        android:background="#fb7299"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -28,7 +29,7 @@
             android:layout_marginLeft="18dp"
             android:text="GAME UNION|哔哩哔哩直播"
             android:textColor="#fff" />
-    </LinearLayout>
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"

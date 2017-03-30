@@ -1,5 +1,6 @@
 package com.zhaopengfei.myapplication;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,11 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.zhaopengfei.myapplication.activity.BaseActivity;
+import com.zhaopengfei.myapplication.activity.LoginActivity;
 import com.zhaopengfei.myapplication.adapter.CommunityViewPagerAdapter;
 import com.zhaopengfei.myapplication.base.BaseFragment;
 import com.zhaopengfei.myapplication.fragment.FaxianFragment;
@@ -51,6 +54,8 @@ public class MainActivity extends BaseActivity
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.tv_longin)
+    TextView tvLongin;
     private ArrayList<BaseFragment> fragments;
     private CommunityViewPagerAdapter adapter;
 
@@ -100,50 +105,6 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-    @Override
-    protected void intListener() {
-
-        titleSlide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-                navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                        drawerLayout.closeDrawer(GravityCompat.START);
-
-                        return true;
-                    }
-                });
-
-            }
-        });
-
-        navView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
-
-    }
-
-    protected void initData() {
-        initFragment();
-        //设置适配器
-        adapter = new CommunityViewPagerAdapter(getSupportFragmentManager(), fragments);
-        viewPager.setAdapter(adapter);
-        //关联viewpager
-        tablayout.setupWithViewPager(viewPager);
-        tablayout.setTabMode(tablayout.MODE_FIXED);
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_main;
-
-    }
 
     private void initFragment() {
         fragments = new ArrayList<>();
@@ -175,12 +136,78 @@ public class MainActivity extends BaseActivity
                         Toast.makeText(MainActivity.this, keyword, Toast.LENGTH_SHORT).show();
                     }
                 });
-               //3
-                searchFragment.show(getSupportFragmentManager(),SearchFragment.TAG);
+                //3
+                searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
 
 
                 break;
 
         }
     }
+
+    @Override
+    protected String setUrl() {
+        return null;
+    }
+
+    @Override
+    protected void initListener() {
+        titleSlide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                        drawerLayout.closeDrawer(GravityCompat.START);
+
+                        return true;
+                    }
+                });
+
+            }
+        });
+
+
+
+        tvLongin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        navView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData(String json, String error) {
+        initFragment();
+        //设置适配器
+        adapter = new CommunityViewPagerAdapter(getSupportFragmentManager(), fragments);
+        viewPager.setAdapter(adapter);
+        //关联viewpager
+        tablayout.setupWithViewPager(viewPager);
+        tablayout.setTabMode(tablayout.MODE_FIXED);
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_main;
+    }
+
 }

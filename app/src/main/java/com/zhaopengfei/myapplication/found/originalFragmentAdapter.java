@@ -40,10 +40,7 @@ public class originalFragmentAdapter extends RecyclerView.Adapter<originalFragme
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         holder.setData(datas, position);
-
-
     }
 
     @Override

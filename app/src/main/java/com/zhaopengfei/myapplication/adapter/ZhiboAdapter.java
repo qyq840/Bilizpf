@@ -247,6 +247,7 @@ class BannerViewHoler extends RecyclerView.ViewHolder {
             public void OnBannerClick(int position) {
 
                 Intent intent = new Intent(mContext, BannerActivity.class);
+                intent.putExtra("banner",banners.get(position).getLink());
                 mContext.startActivity(intent);
             }
         });

@@ -17,7 +17,6 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 
 public class TopicCenterActivity extends BaseActivity {
@@ -35,9 +34,25 @@ public class TopicCenterActivity extends BaseActivity {
     private TopicCenterBean topicCenterBean;
     private List<TopicCenterBean.ListBean> datas;
 
-    @Override
-    protected void intListener() {
 
+    private void processData(String json) {
+        topicCenterBean = JSON.parseObject(json, TopicCenterBean.class);
+        datas = topicCenterBean.getList();
+
+        adapter = new TopicCenterAdapter(this,datas);
+        lvHuati.setAdapter(adapter);
+
+    }
+
+
+
+    @Override
+    protected String setUrl() {
+        return null;
+    }
+
+    @Override
+    protected void initListener() {
         ivBackHuati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,9 +62,12 @@ public class TopicCenterActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
-        ButterKnife.bind(this);
+    protected void initView() {
 
+    }
+
+    @Override
+    protected void initData(String json, String error) {
         OkHttpUtils.get().url(Constants.HUATIZHONGXIN_JSON).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -62,19 +80,8 @@ public class TopicCenterActivity extends BaseActivity {
         });
     }
 
-    private void processData(String json) {
-        topicCenterBean = JSON.parseObject(json, TopicCenterBean.class);
-        datas = topicCenterBean.getList();
-
-        adapter = new TopicCenterAdapter(this,datas);
-        lvHuati.setAdapter(adapter);
-
-    }
-
-
     @Override
-    public int getLayoutId() {
+    protected int setLayoutId() {
         return R.layout.activity_topic_center;
     }
-
 }

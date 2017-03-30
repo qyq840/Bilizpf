@@ -1,6 +1,7 @@
 package com.zhaopengfei.myapplication.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -22,6 +23,7 @@ public class TuiJianAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final TuijianBean datas;
+
 
     public TuiJianAdapter(Context mContext, TuijianBean tuijianBean) {
         this.mContext = mContext;
@@ -45,7 +47,7 @@ public class TuiJianAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.tuijian_adapter, null);
@@ -54,6 +56,7 @@ public class TuiJianAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
 
         TuijianBean.DataBean dataBean = datas.getData().get(position);
 
@@ -72,6 +75,8 @@ public class TuiJianAdapter extends BaseAdapter {
         TextView tvName;
         @BindView(R.id.tv_richang)
         TextView tvRichang;
+        @BindView(R.id.card_view)
+        CardView cardView;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

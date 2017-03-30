@@ -70,8 +70,6 @@ public class TuijianFragment extends BaseFragment {
         tuijianBean = JSON.parseObject(json, TuijianBean.class);
         adapter = new TuiJianAdapter(mContext, tuijianBean);
         gvTuijian.setAdapter(adapter);
-
-
     }
 
 }

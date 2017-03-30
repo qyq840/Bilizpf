@@ -35,30 +35,7 @@ public class HuoDongActivity extends BaseActivity {
 
 
     private HuoDongAdapter adapter;
-    @Override
-    protected void intListener() {
-        ivBackHuati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 
-    @Override
-    protected void initData() {
-        OkHttpUtils.get().url("http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490338432000&sign=f7265d81f829a0ec759bb09fa93001f1").build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                    processData(response);
-            }
-        });
-    }
 
     private void processData(String json) {
         huoDongBean = JSON.parseObject(json, HuoDongBean.class);
@@ -68,9 +45,44 @@ public class HuoDongActivity extends BaseActivity {
         lvHuati.setAdapter(adapter);
     }
 
+
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_huo_dong;
+    protected String setUrl() {
+        return null;
     }
 
+    @Override
+    protected void initListener() {
+        ivBackHuati.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData(String json, String error) {
+        OkHttpUtils.get().url("http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490338432000&sign=f7265d81f829a0ec759bb09fa93001f1").build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                processData(response);
+            }
+        });
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_huo_dong;
+    }
 }

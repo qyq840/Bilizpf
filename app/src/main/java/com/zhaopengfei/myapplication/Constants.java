@@ -13,7 +13,11 @@ public class Constants {
 
     private static final String BASE_URL_JSON = BASE_URL+"/json/";
 
+
+
     public static final  String FENQU_JSON="http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+    public static final  String SHOPPINH_BANNER="http://bmall.bilibili.com/apiSecond/public/getModelData.do?mark_code=7f7d1ac0796211e6ab5352223301d29a";
+    public static final  String QUANBU_SHANGPIN="http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
 
    //发现里面的话题中心
     public static final  String HUATIZHONGXIN_JSON="http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";

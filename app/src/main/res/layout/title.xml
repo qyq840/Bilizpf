@@ -24,6 +24,7 @@
             android:layout_height="40dp" />
 
         <TextView
+            android:id="@+id/tv_longin"
             android:layout_marginLeft="15dp"
             android:text="未登录"
             android:layout_width="wrap_content"

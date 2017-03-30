@@ -39,22 +39,7 @@ public class OriginalActivity extends BaseActivity {
     private OriginalAdapter adapter;
     private ArrayList<BaseFragment> fragments;
 
-    @Override
-    protected void intListener() {
 
-    }
-
-    @Override
-    protected void initData() {
-
-        initFragment();
-        adapter = new OriginalAdapter(getSupportFragmentManager(), fragments);
-        viewPager.setAdapter(adapter);
-
-        //关联
-        tablayout.setupWithViewPager(viewPager);
-        tablayout.setTabMode(tablayout.MODE_SCROLLABLE);
-    }
 
     private void initFragment() {
         fragments = new ArrayList<>();
@@ -65,10 +50,6 @@ public class OriginalActivity extends BaseActivity {
 
     }
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_original;
-    }
 
 
     @OnClick({R.id.iv_back_yuanchuang, R.id.title_download, R.id.title_search})
@@ -84,5 +65,36 @@ public class OriginalActivity extends BaseActivity {
                 Toast.makeText(OriginalActivity.this, "搜索", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    protected String setUrl() {
+        return null;
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData(String json, String error) {
+        initFragment();
+        adapter = new OriginalAdapter(getSupportFragmentManager(), fragments);
+        viewPager.setAdapter(adapter);
+
+        //关联
+        tablayout.setupWithViewPager(viewPager);
+        tablayout.setTabMode(tablayout.MODE_SCROLLABLE);
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_original;
     }
 }

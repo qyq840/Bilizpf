@@ -50,23 +50,7 @@ public class QuanQuRankingActivity extends BaseActivity {
 
     private QuanQuAdapter adapter;
     private ArrayList<BaseFragment> fragments;
-    @Override
-    protected void intListener() {
 
-    }
-
-    @Override
-    protected void initData() {
-
-
-        initFragment();
-        adapter =new QuanQuAdapter(getSupportFragmentManager(),fragments);
-        viewPager.setAdapter(adapter);
-
-        tablayout.setupWithViewPager(viewPager);
-        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-    }
 
     private void initFragment() {
         fragments = new ArrayList<>();
@@ -87,10 +71,6 @@ public class QuanQuRankingActivity extends BaseActivity {
     }
 
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_quan_qu_ranking;
-    }
 
 
     @OnClick({R.id.iv_back_quanqu, R.id.title_download, R.id.title_search})
@@ -106,5 +86,35 @@ public class QuanQuRankingActivity extends BaseActivity {
                 Toast.makeText(QuanQuRankingActivity.this, "搜索", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    protected String setUrl() {
+        return null;
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData(String json, String error) {
+        initFragment();
+        adapter =new QuanQuAdapter(getSupportFragmentManager(),fragments);
+        viewPager.setAdapter(adapter);
+
+        tablayout.setupWithViewPager(viewPager);
+        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_quan_qu_ranking;
     }
 }
