@@ -21,6 +21,7 @@ import com.zhaopengfei.myapplication.activity.BaseActivity;
 import com.zhaopengfei.myapplication.activity.LoginActivity;
 import com.zhaopengfei.myapplication.adapter.CommunityViewPagerAdapter;
 import com.zhaopengfei.myapplication.base.BaseFragment;
+import com.zhaopengfei.myapplication.download.DownloadListActivity;
 import com.zhaopengfei.myapplication.fragment.FaxianFragment;
 import com.zhaopengfei.myapplication.fragment.FenQuFragment;
 import com.zhaopengfei.myapplication.fragment.TuijianFragment;
@@ -123,6 +124,7 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.title_download:
                 Toast.makeText(MainActivity.this, "下载", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, DownloadListActivity.class));
                 break;
             case R.id.title_search:
 

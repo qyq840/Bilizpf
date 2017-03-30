@@ -82,6 +82,7 @@
         <activity android:name=".activity.OriginalActivity" />
         <activity android:name=".activity.QuanQuRankingActivity" />
         <activity android:name=".shopping.ShoppingActivity" />
+        <activity android:name=".download.DownloadListActivity"/>
         <activity
             android:name=".activity.DanmkuVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
